@@ -100,4 +100,12 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    // TODO: Create custom toString method for TDD Task
+    @Override
+    public String toString() {
+        String newline = "\n";
+        return newline +
+                newline;
+    }
 }

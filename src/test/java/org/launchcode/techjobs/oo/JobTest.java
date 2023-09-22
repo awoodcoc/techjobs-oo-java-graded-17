@@ -39,4 +39,13 @@ public class JobTest {
         Job job2 = new Job("Web Designer", new Employer("Vogue"), new Location("New York City"), new PositionType("Team Leader"), new CoreCompetency("JavaScript"));
         assertFalse(job1.equals(job2));
     }
+
+    // Test 4: TDD to test toString method for Job class
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job job1 = new Job("PR Specialist", new Employer("Edelman PR"), new Location("Chicago"), new PositionType("Entry Level"), new CoreCompetency("Flexibility"));
+        String newline = "\n";
+        assertEquals(newline, job1.toString().substring(0,1));
+        assertEquals(newline, job1.toString().substring(job1.toString().length() - 1));
+    }
 }
