@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
+import static java.lang.System.lineSeparator;
 
 public class Job {
 
@@ -104,8 +105,23 @@ public class Job {
     // TODO: Create custom toString method for TDD Task
     @Override
     public String toString() {
-        String newline = "\n";
-        return newline +
-                newline;
+        // Line breaks
+        // String newline = System.lineSeparator();
+
+        // Ternary operators for fields
+        String jobName = ((name != null && !name.isEmpty()) ? name : "Data not available");
+        String jobEmployer = ((employer.getValue() != null && !employer.getValue().isEmpty()) ? employer.getValue() : "Data not available");
+        String jobLocation = ((location.getValue() != null && !location.getValue().isEmpty()) ? location.getValue() : "Data not available");
+        String jobPositionType = ((positionType.getValue() != null && !positionType.getValue().isEmpty()) ? positionType.getValue() : "Data not available");
+        String jobCoreCompetency = ((coreCompetency.getValue() != null && !coreCompetency.getValue().isEmpty()) ? coreCompetency.getValue() : "Data not available");
+
+        return System.lineSeparator() +
+                "ID: " + id + System.lineSeparator() +
+                "Name: " + jobName + System.lineSeparator() +
+                "Employer: " + jobEmployer + System.lineSeparator() +
+                "Location: " + jobLocation + System.lineSeparator() +
+                "Position Type: " + jobPositionType + System.lineSeparator() +
+                "Core Competency: " + jobCoreCompetency +
+                System.lineSeparator();
     }
 }

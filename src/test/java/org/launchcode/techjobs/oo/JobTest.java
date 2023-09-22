@@ -3,6 +3,7 @@ package org.launchcode.techjobs.oo;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static java.lang.System.lineSeparator;
 
 public class JobTest {
     //TODO: Create your unit tests here
@@ -40,12 +41,57 @@ public class JobTest {
         assertFalse(job1.equals(job2));
     }
 
-    // Test 4: TDD to test toString method for Job class
+    // Test 4: TDD to test toString method that begins and ends with a new line
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
         Job job1 = new Job("PR Specialist", new Employer("Edelman PR"), new Location("Chicago"), new PositionType("Entry Level"), new CoreCompetency("Flexibility"));
-        String newline = "\n";
-        assertEquals(newline, job1.toString().substring(0,1));
-        assertEquals(newline, job1.toString().substring(job1.toString().length() - 1));
+        // String newline = lineSeparator();
+        assertEquals(System.lineSeparator(), job1.toString().substring(0,1));
+        assertEquals(System.lineSeparator(), job1.toString().substring(job1.toString().length() - 1));
+    }
+
+    // Test 5: TDD to test toString method that contains the correct labels and data
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job job1 = new Job("PR Specialist", new Employer("Edelman PR"), new Location("Chicago"), new PositionType("Entry Level"), new CoreCompetency("Flexibility"));
+        // Label test checks
+        String idLabel = "ID";
+        String nameLabel = "Name:";
+        String employerLabel = "Employer:";
+        String locationLabel = "Location";
+        String positionTypeLabel = "Position Type:";
+        String coreCompetencyLabel = "Core Competency:";
+
+        // Value test checks
+        int idValue = job1.getId();
+        String nameValue = "PR Specialist";
+        String employerValue = "Edelman PR";
+        String locationValue = "Chicago";
+        String positionTypeValue = "Entry Level";
+        String coreCompetencyValue = "Flexibility";
+
+        // Tests themselves
+        assertTrue(job1.toString().contains(idLabel));
+        assertTrue(job1.toString().contains(String.valueOf(idValue)));
+        assertTrue(job1.toString().contains(nameLabel));
+        assertTrue(job1.toString().contains(nameValue));
+        assertTrue(job1.toString().contains(employerLabel));
+        assertTrue(job1.toString().contains(employerValue));
+        assertTrue(job1.toString().contains(locationLabel));
+        assertTrue(job1.toString().contains(locationValue));
+        assertTrue(job1.toString().contains(positionTypeLabel));
+        assertTrue(job1.toString().contains(positionTypeValue));
+        assertTrue(job1.toString().contains(coreCompetencyLabel));
+        assertTrue(job1.toString().contains(coreCompetencyValue));
+    }
+
+    // Test 6: TDD to test if a field is empty, toString adds "Data not available" after the label.
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job job1 = new Job("PR Specialist", new Employer("Edelman PR"), new Location(null), new PositionType("Entry Level"), new CoreCompetency("Flexibility"));
+        Job job2 = new Job("PR Specialist", new Employer("Edelman PR"), new Location(""), new PositionType("Entry Level"), new CoreCompetency("Flexibility"));
+        String message = "Data not available";
+        assertTrue(job1.toString().contains(message));
+        assertTrue(job2.toString().contains(message));
     }
 }
