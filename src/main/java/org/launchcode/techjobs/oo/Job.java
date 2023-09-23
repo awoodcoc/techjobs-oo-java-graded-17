@@ -1,7 +1,6 @@
 package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
-import static java.lang.System.lineSeparator;
 
 public class Job {
 
